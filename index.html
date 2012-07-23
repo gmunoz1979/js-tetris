@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0.1 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>JS-Tetris</title>
+        <link rel="stylesheet" type="text/css" href="default.css">
+        
+        <script language="javascript" type="text/javascript" src="game.js"></script>
+        <script language="javascript" type="text/javascript" src="core.js"></script>
+        <script language="javascript" type="text/javascript" src="background.js"></script>
+        <script language="javascript" type="text/javascript" src="figures.js"></script>
+        <script language="javascript" type="text/javascript" src="player.js"></script>
+        <script language="javascript" type="text/javascript" src="views/game.js"></script>
+        <script language="javascript" type="text/javascript" src="views/player.js"></script>
+        <script language="javascript" type="text/javascript" src="views/background.js"></script>
+        
+        <script language="javascript" type="text/javascript">
+        <!--
+            
+            window.onload = Game.prototype.core.concatenateFn(window.onload, 
+                function() {
+                
+                    var game = new Game();
+                    
+                    game.render();
+                    game.init();
+                    
+                    document.onkeydown = function(e) {
+                    
+                        if (game.is_start && !game.is_locked) {
+                            var player = game.player;
+                            
+                            if (e.keyCode == 38) {
+                                player.rotate(1, game.collitions, [game.bg, player]);
+                            }
+                            
+                            if (e.keyCode == 37) {
+                                player.move(-1, game.collitions, [game.bg, player]);
+                            }
+                            
+                            if (e.keyCode == 39) {
+                                player.move( 1, game.collitions, [game.bg, player]); 
+                            }
+                            
+                            if (e.keyCode == 40) {
+                            
+                                game.accelerate();
+                            }
+                            
+                            player.draw(game.tetris);
+                            
+                        }
+                    };
+                }
+            );
+        //-->
+        </script>
+    </head>
+    <body></body>
+</html
