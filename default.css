@@ -69,6 +69,19 @@ body {
     -moz-user-select: none;
 }
 
+.button-restart-div {
+    font-size: 12px;
+    position: absolute;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+    margin: 170px 60px;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+}
+
 .square_magenta_div {
     width: 12px;
     height: 12px;

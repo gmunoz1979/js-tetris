@@ -150,9 +150,27 @@ Game.prototype.pause = function() {
 
     this.is_paused = true;
     this.btn_resume();
+    this.btn_restart();
 }
 
 Game.prototype.resume = function() {
     
     this.is_paused = false;
+}
+
+Game.prototype.restart = function() {
+    
+    var player = this.player;
+    var bg     = this.bg;
+    
+    this.is_paused = false;
+    this.times = 0;
+    
+    player.restart();
+    player.reset_position(0, (bg.cols/2)-(player.cur_rotation.length/2));
+    player.draw(self.tetris, null);
+    delete player.container;
+    
+    bg.restart();
+    bg.draw(this.tetris);
 }

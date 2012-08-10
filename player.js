@@ -109,3 +109,13 @@ Player.prototype.next_level = function() {
     this.level++;
     this.speed += 0.01;
 }
+
+Player.prototype.restart = function() {
+
+    this.next_figure();
+    
+    this.points = 0;
+    this.level  = 1;
+    this.speed  = 0.02;
+    this.rows   = 0;
+}

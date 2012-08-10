@@ -7,6 +7,11 @@ function Background() {
     this.complete = [];
 }
 
+Background.prototype.restart = function() {
+    
+    this.table = this.new_table();
+}
+
 Background.prototype.new_table = function() {
 
     return [

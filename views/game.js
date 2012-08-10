@@ -58,14 +58,43 @@ Game.prototype.btn_resume = function() {
     self.msg.innerHTML = 'Presione <b>Continuar</b> para volver al Juego.'
     
     btn.onclick = function() { 
+    
+        var btn_restart = document.getElementById('btn-restart');
+    
+        self.tetris.removeChild(btn_restart);
         self.tetris.removeChild(btn);
         self.resume();
         self.msg.innerHTML = 'Presione <b>Esc</b> para pausar Juego.'
+        delete btn_restart;
         delete btn;
     };
       
+    btn.id = 'btn-resume';
     btn.className = 'button-start-div';
     btn.innerHTML = 'CONTINUAR';
+ 
+    this.tetris.appendChild(btn);
+}
+
+Game.prototype.btn_restart = function() {
+
+    var self = this;
+    var btn  = document.createElement('div');
+    
+    btn.onclick = function() { 
+        
+        var btn_resume = document.getElementById('btn-resume');
+    
+        self.tetris.removeChild(btn_resume);
+        self.tetris.removeChild(btn);
+        self.restart();
+        delete btn_resume;
+        delete btn;
+    };
+      
+    btn.id = 'btn-restart';
+    btn.className = 'button-restart-div';
+    btn.innerHTML = 'REINICIAR';
  
     this.tetris.appendChild(btn);
 }
