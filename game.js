@@ -105,6 +105,15 @@ Game.prototype.start = function() {
         }
         else {
             bg.insert_data(player.cur_rotation, player.color_id, player.position);
+            
+            if (bg.is_gameover) {
+            
+                self.is_paused = true;
+                self.show_gameover();
+                self.btn_restart();
+                return;
+            }
+            
             var count = bg.evaluate_line();
             bg.draw(self.tetris);
             delete player.container;
@@ -164,6 +173,7 @@ Game.prototype.restart = function() {
     var bg     = this.bg;
     
     this.is_paused = false;
+    this.is_locked = false;
     this.times = 0;
     
     player.restart();

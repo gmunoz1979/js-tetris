@@ -1,15 +1,17 @@
 function Background() {
 
-    this.table = this.new_table();
-    this.rows  = this.table.length;
-    this.cols  = this.table[0].length;
+    this.table       = this.new_table();
+    this.rows        = this.table.length;
+    this.cols        = this.table[0].length;
+    this.is_gameover = false;
     
     this.complete = [];
 }
 
 Background.prototype.restart = function() {
-    
+
     this.table = this.new_table();
+    this.is_gameover = false;
 }
 
 Background.prototype.new_table = function() {
@@ -52,13 +54,18 @@ Background.prototype.new_table = function() {
 
 Background.prototype.insert_data = function(data, color, offset) {
 
+    var self = this;
     offset = offset || { x:0, y: 0 };
           
     Game.prototype.core.ARRAY.forEach(data, 
         function(x, y, item) {
         
             if (item) {
-               this.table[offset.x+x-1][offset.y+y] = color;
+                if (offset.x+x-1 <= 1) {
+                    self.is_gameover = true;
+                    return;
+                }
+                this.table[offset.x+x-1][offset.y+y] = color;
             }
         }
         ,

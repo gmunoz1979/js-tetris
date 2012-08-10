@@ -57,6 +57,19 @@
                             
                         }
                     };
+                    
+                    document.onkeyup = function(e) {
+                    
+                        if (game.is_start) {
+                        
+                            var player = game.player;
+                           
+                            if (e.keyCode == 38) {
+                                player.unlock_rotate();
+                           
+                            }
+                        }
+                    }
                 }
             );
         //-->

@@ -5,6 +5,7 @@ function Player(x, y) {
     this.speed  = 0.02;    
     this.next_figure(x, y);
     this.rows   = 0;
+    this.lock_rotate = false;
 }
 
 Player.prototype.get_id = function() {
@@ -60,6 +61,9 @@ Player.prototype.next_row = function() {
 }
 
 Player.prototype.rotate = function(dir, collitions, params) {
+
+    if (this.lock_rotate) { return; }
+    this.lock_rotate = true;
 
     this.preview.rotation = this.rotation;
     var preview_rotation     = this.rotation;
@@ -118,4 +122,9 @@ Player.prototype.restart = function() {
     this.level  = 1;
     this.speed  = 0.02;
     this.rows   = 0;
+    this.lock_rotate = false;
+}
+
+Player.prototype.unlock_rotate = function() {
+    this.lock_rotate = false;
 }

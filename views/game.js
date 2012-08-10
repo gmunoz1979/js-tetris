@@ -85,10 +85,13 @@ Game.prototype.btn_restart = function() {
         
         var btn_resume = document.getElementById('btn-resume');
     
-        self.tetris.removeChild(btn_resume);
+        if (btn_resume) {
+            self.tetris.removeChild(btn_resume);
+            delete btn_resume;
+        }
         self.tetris.removeChild(btn);
         self.restart();
-        delete btn_resume;
+        
         delete btn;
     };
       
@@ -97,6 +100,15 @@ Game.prototype.btn_restart = function() {
     btn.innerHTML = 'REINICIAR';
  
     this.tetris.appendChild(btn);
+}
+
+Game.prototype.show_gameover = function() {
+
+    var win = document.createElement('div');
+    win.className = 'window-gameover-div';
+    win.innerHTML = 'Game Over';
+    
+    this.tetris.appendChild(win);
 }
 
 Game.prototype.presentation = function() {

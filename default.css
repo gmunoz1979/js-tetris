@@ -56,6 +56,22 @@ body {
     text-align: center;
 }
 
+.window-gameover-div {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    width: 120px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin: 100px 30px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+    user-select: none;
+    -moz-user-select: none;
+}
+
 .button-start-div {
     font-size: 12px;
     position: absolute;
