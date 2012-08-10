@@ -169,6 +169,10 @@ Game.prototype.resume = function() {
 
 Game.prototype.restart = function() {
     
+    this.time.innerHTML = 'Tiempo: 0';
+    this.points.innerHTML = 'Puntos: 0';
+    this.levels.innerHTML = 'Nivel: 0';
+    
     var player = this.player;
     var bg     = this.bg;
     
