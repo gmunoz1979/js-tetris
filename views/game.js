@@ -50,6 +50,26 @@ Game.prototype.btn_start = function() {
     this.tetris.appendChild(btn);
 }
 
+Game.prototype.btn_resume = function() {
+
+    var self = this;
+    var btn  = document.createElement('div');
+    
+    self.msg.innerHTML = 'Presione <b>Continuar</b> para volver al Juego.'
+    
+    btn.onclick = function() { 
+        self.tetris.removeChild(btn);
+        self.resume();
+        self.msg.innerHTML = 'Presione <b>Esc</b> para pausar Juego.'
+        delete btn;
+    };
+      
+    btn.className = 'button-start-div';
+    btn.innerHTML = 'CONTINUAR';
+ 
+    this.tetris.appendChild(btn);
+}
+
 Game.prototype.presentation = function() {
 
     var tetris = [

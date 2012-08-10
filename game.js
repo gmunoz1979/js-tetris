@@ -11,10 +11,12 @@ function Game() {
     this.is_locked        = false;
     this.fnLoop           = {};
     this.times            = 0;    
+    this.is_paused        = false;
     
     __loop__ = this.core.concatenateFn(__loop__, this.loop, this);
     __time__ = function() {
-    
+        
+        if (self.is_paused) { return; }
         self.time.innerHTML = 'Time: ' + ++self.times;
     }
 }
@@ -29,6 +31,8 @@ Game.prototype.init = function() {
 }
 
 Game.prototype.loop = function() {
+
+    if (this.is_paused) { return; }
 
     for (var name in this.fnLoop) {
     
@@ -140,4 +144,15 @@ Game.prototype.accelerate = function() {
     this.is_locked = true;
     this.player.preview_speed = this.player.speed;
     this.player.speed = 1;
+}
+
+Game.prototype.pause = function() {
+
+    this.is_paused = true;
+    this.btn_resume();
+}
+
+Game.prototype.resume = function() {
+    
+    this.is_paused = false;
 }

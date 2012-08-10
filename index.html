@@ -31,21 +31,26 @@
                         if (game.is_start && !game.is_locked) {
                             var player = game.player;
                             
-                            if (e.keyCode == 38) {
-                                player.rotate(1, game.collitions, [game.bg, player]);
-                            }
-                            
-                            if (e.keyCode == 37) {
-                                player.move(-1, game.collitions, [game.bg, player]);
-                            }
-                            
-                            if (e.keyCode == 39) {
-                                player.move( 1, game.collitions, [game.bg, player]); 
-                            }
-                            
-                            if (e.keyCode == 40) {
-                            
-                                game.accelerate();
+                            if (!game.is_paused) {
+                                if (e.keyCode == 38) {
+                                    player.rotate(1, game.collitions, [game.bg, player]);
+                                }
+                                
+                                if (e.keyCode == 37) {
+                                    player.move(-1, game.collitions, [game.bg, player]);
+                                }
+                                
+                                if (e.keyCode == 39) {
+                                    player.move( 1, game.collitions, [game.bg, player]); 
+                                }
+                                
+                                if (e.keyCode == 40) {
+                                    game.accelerate();
+                                }
+                                
+                                if (e.keyCode == 27) {
+                                    game.pause();                            
+                                }
                             }
                             
                             player.draw(game.tetris);
