@@ -47,6 +47,20 @@ Background.prototype.animate_remove = function(container, fn) {
     
     fn_array.push(
         function() {
+            self.mark_line(8);
+            self.draw(container);
+        }
+    );
+    
+    fn_array.push(
+        function() {
+            self.mark_line(0);
+            self.draw(container);
+        }
+    );
+    
+    fn_array.push(
+        function() {
             self.remove_line();
             self.insert_line();
             self.draw(container);
@@ -59,5 +73,5 @@ Background.prototype.animate_remove = function(container, fn) {
         }
     );
 
-    Game.prototype.core.sequence(fn_array, 200, this.complete.length, fn);
+    Game.prototype.core.sequence(fn_array, 100, this.complete.length, fn);
 }
