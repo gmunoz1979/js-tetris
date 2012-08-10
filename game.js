@@ -17,7 +17,7 @@ function Game() {
     __time__ = function() {
         
         if (self.is_paused) { return; }
-        self.time.innerHTML = 'Time: ' + ++self.times;
+        self.time.innerHTML = 'Tiempo: ' + ++self.times;
     }
 }
 
