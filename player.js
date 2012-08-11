@@ -1,5 +1,6 @@
 function Player(x, y) {
 
+    this.figures_id = [this.get_id()];
     this.points = 0;
     this.level  = 1;
     this.speed  = 0.02;    
@@ -13,12 +14,21 @@ Player.prototype.get_id = function() {
     return Math.floor(Math.random() * 7);
 }
 
+Player.prototype.next_id = function() {
+    
+    var ids = this.figures_id;
+    
+    return ids[ids.length-1];
+}
+
 Player.prototype.next_figure = function(x, y) {
+
+    this.figures_id.push(this.get_id());
 
     x = Game.prototype.core.has_value(x) ? x : 0;
     y = Game.prototype.core.has_value(y) ? y : 0;
 
-    this.id           = this.get_id();
+    this.id           = this.figures_id.shift();
     this.figure       = figures[this.id];
     this.rotation     = 0;
     this.color_id     = this.id+1;

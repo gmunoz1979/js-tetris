@@ -39,6 +39,8 @@ Game.prototype.init = function() {
     this.time.innerHTML = '<b>Tiempo:</b> 00:00';
     this.points.innerHTML = '<b>Puntos:</b> 0';
     this.levels.innerHTML = '<b>Nivel:</b> 0';
+    this.next.innerHTML = '<div style="text-align:center"><b>Pr&oacute;xima figura<b/></div>' +
+                           '<div id="next_figure"></div>';
 }
 
 Game.prototype.loop = function() {
@@ -85,6 +87,8 @@ Game.prototype.start = function() {
     var player = this.player = new Player();
 
     bg.draw(this.tetris);
+    
+    this.draw_next_figure();
 	
     player.reset_position(0, (bg.cols/2)-(player.cur_rotation.length/2));
     this.levels.innerHTML = '<b>Nivel:</b> ' + player.level;
@@ -100,6 +104,8 @@ Game.prototype.start = function() {
         player.next_figure();
         player.reset_position(0, (bg.cols/2)-(player.cur_rotation.length/2));
         player.draw(self.tetris, null);
+        
+        self.draw_next_figure();
         
         if (player.rows >= 10) {
             player.next_level();

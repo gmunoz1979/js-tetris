@@ -149,3 +149,12 @@ Game.prototype.core.sequence = function(fn_array, interval, repeat, fn_end) {
     
     this.id_sequence = setInterval('__sequence__()', interval);
 };
+
+Game.prototype.core.clear = function(o) {
+
+    if (o.hasChildNodes()) {
+        while (o.childNodes.length >= 1) {
+            o.removeChild(o.firstChild);
+        }
+    }
+}

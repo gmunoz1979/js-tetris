@@ -8,6 +8,7 @@ Game.prototype.render = function() {
     var title  = this.title  = document.createElement('div');
     var tetris = this.tetris = document.createElement('div');
     var msg    = this.msg    = document.createElement('div');
+    var next   = this.next   = document.createElement('div');
       
     game.id   = 'game';
     points.id = 'points';
@@ -17,6 +18,7 @@ Game.prototype.render = function() {
     title.id  = 'title';
     tetris.id = 'tetris';
     msg.id    = 'message';
+    next.id   = 'next';
     
     msg.innerHTML = 'Presione <b>Start</b> para empezar Juego.';
 
@@ -28,6 +30,7 @@ Game.prototype.render = function() {
     game.appendChild(info);
     game.appendChild(tetris);
     game.appendChild(msg);
+    game.appendChild(next);
     
     document.body.appendChild(game);
 }
@@ -162,4 +165,16 @@ Game.prototype.presentation = function() {
     );
     
     this.btn_start();
+}
+
+Game.prototype.draw_next_figure = function() {
+
+    var player = this.player;
+    var div    = document.getElementById('next_figure');
+    var next_id = player.next_id();
+    Game.prototype.core.clear(div);
+    
+    var figure = this.core.draw(figures[next_id].rotations[0], colors[next_id+1], div);
+    
+    figure.style.margin = '0 auto 0 auto';
 }

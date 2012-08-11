@@ -1,12 +1,3 @@
-Player.prototype.clear = function(o) {
-
-    if (o.hasChildNodes()) {
-        while (o.childNodes.length >= 1) {
-            o.removeChild(o.firstChild);
-        }
-    }
-}
-
 Player.prototype.draw = function(container, offset) {
     
     offset = offset || this.position;
@@ -22,7 +13,7 @@ Player.prototype.draw = function(container, offset) {
     }
     
     if (this.rotation != this.preview.rotation) {
-        this.clear(c);        
+        Game.prototype.core.clear(c);        
     }
     
     if (!c.hasChildNodes()) {

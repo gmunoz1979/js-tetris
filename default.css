@@ -27,11 +27,30 @@ body {
 }
 
 #game {
+    position: relative;
     border: 1px solid black;
     width: 200px;
     margin: 0 auto 0 auto;
     padding: 5px;
     background-color: #eee;
+}
+
+#next {
+    position: absolute;
+    border: 1px solid black;
+    width: 90px;
+    height: 80px;
+    background-color: #eee;
+    padding: 2px;
+    left: 220px;
+    top: 115px;
+}
+
+#next_figure {
+    position: relative;
+    top: 10px;
+    left: -10px;
+    width: 1px;
 }
 
 #title {
