@@ -17,15 +17,26 @@ function Game() {
     __time__ = function() {
         
         if (self.is_paused) { return; }
-        self.time.innerHTML = '<b>Tiempo:</b> ' + ++self.times;
+        self.time.innerHTML = '<b>Tiempo:</b> ' + self.format_time(++self.times);
     }
+}
+
+Game.prototype.format_time = function(times) {
+
+    var minutes = Math.floor(times / 60);
+    var seconds = times % 60;
+    
+    minutes = (minutes > 9 ? '' : '0') + minutes;
+    seconds = (seconds > 9 ? '' : '0') + seconds;
+    
+    return minutes + ':' + seconds;
 }
 
 Game.prototype.init = function() {
 
     this.presentation();
     
-    this.time.innerHTML = '<b>Tiempo:</b> 0';
+    this.time.innerHTML = '<b>Tiempo:</b> 00:00';
     this.points.innerHTML = '<b>Puntos:</b> 0';
     this.levels.innerHTML = '<b>Nivel:</b> 0';
 }
@@ -169,7 +180,7 @@ Game.prototype.resume = function() {
 
 Game.prototype.restart = function() {
     
-    this.time.innerHTML = '<b>Tiempo:</b> 0';
+    this.time.innerHTML = '<b>Tiempo:</b> 00:00';
     this.points.innerHTML = '<b>Puntos:</b> 0';
     this.levels.innerHTML = '<b>Nivel:</b> 0';
     
