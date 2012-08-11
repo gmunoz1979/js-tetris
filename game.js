@@ -17,7 +17,7 @@ function Game() {
     __time__ = function() {
         
         if (self.is_paused) { return; }
-        self.time.innerHTML = 'Tiempo: ' + ++self.times;
+        self.time.innerHTML = '<b>Tiempo:</b> ' + ++self.times;
     }
 }
 
@@ -25,9 +25,9 @@ Game.prototype.init = function() {
 
     this.presentation();
     
-    this.time.innerHTML = 'Tiempo: 0';
-    this.points.innerHTML = 'Puntos: 0';
-    this.levels.innerHTML = 'Nivel: 0';
+    this.time.innerHTML = '<b>Tiempo:</b> 0';
+    this.points.innerHTML = '<b>Puntos:</b> 0';
+    this.levels.innerHTML = '<b>Nivel:</b> 0';
 }
 
 Game.prototype.loop = function() {
@@ -76,7 +76,7 @@ Game.prototype.start = function() {
     bg.draw(this.tetris);
 	
     player.reset_position(0, (bg.cols/2)-(player.cur_rotation.length/2));
-    this.levels.innerHTML = 'Nivel: ' + player.level;
+    this.levels.innerHTML = '<b>Nivel:</b> ' + player.level;
     var restart = function() {
     
         self.is_locked = false;
@@ -92,7 +92,7 @@ Game.prototype.start = function() {
         
         if (player.rows >= 10) {
             player.next_level();
-            self.levels.innerHTML = 'Nivel: ' + player.level;
+            self.levels.innerHTML = '<b>Nivel:</b> ' + player.level;
         }
     }
     
@@ -124,7 +124,7 @@ Game.prototype.start = function() {
                     function() {
                         player.rows += count;
                         player.points += (10 * count);
-                        self.points.innerHTML = 'Puntos: ' + player.points;
+                        self.points.innerHTML = '<b>Puntos:</b> ' + player.points;
                         
                         self.id_loop = setInterval('__loop__()', 10);
                         restart();
@@ -169,9 +169,9 @@ Game.prototype.resume = function() {
 
 Game.prototype.restart = function() {
     
-    this.time.innerHTML = 'Tiempo: 0';
-    this.points.innerHTML = 'Puntos: 0';
-    this.levels.innerHTML = 'Nivel: 0';
+    this.time.innerHTML = '<b>Tiempo:</b> 0';
+    this.points.innerHTML = '<b>Puntos:</b> 0';
+    this.levels.innerHTML = '<b>Nivel:</b> 0';
     
     var player = this.player;
     var bg     = this.bg;
